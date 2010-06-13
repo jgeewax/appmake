@@ -65,4 +65,4 @@ endif
 
 helipad-project: project
 	@wget -q http://github.com/jgeewax/helipad/raw/master/helipad.py
-
+	@wget -q http://github.com/jgeewax/helipad/raw/master/jinja2
