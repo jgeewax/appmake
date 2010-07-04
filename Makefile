@@ -1,6 +1,7 @@
 PYTHON          = python
 APPENGINE       = /usr/local/google_appengine
-EMAIL           = jj@geewax.org
+APP_ID          = (YOUR-APP-ID)
+EMAIL           = (YOUR-EMAIL)
 SERVE_PORT      = 9091
 SERVE_ADDRESS   = 0.0.0.0
 DATASTORE_PATH  = ./datastore
@@ -12,6 +13,8 @@ help:
 	@echo " deploy     Deploys the current project to AppEngine"
 	@echo " rollback   Rolls back a unclosed update to the application"
 	@echo " serve      Runs the development web server"
+	@echo " console    Opens a development console to your remote application"
+	@echo "            (Only works if you've enabled the /remote_api URL"
 
 test:
 	@nosetests --with-gae --with-isolation $(dir)
@@ -32,6 +35,13 @@ serve:
 	--datastore_path=$(DATASTORE_PATH) \
 	--disable_static_caching \
 	.
+
+console:
+	@$(PYTHON) -c "import code, getpass; \
+from google.appengine.ext.remote_api import remote_api_stub; \
+auth = lambda: ('$(EMAIL)', getpass.getpass('Password: ')); \
+remote_api_stub.ConfigureRemoteDatastore('$(APP_ID)', '/remote_api', auth, '$(APP_ID).appspot.com'); \
+code.interact('App Engine console for $(APP_ID)', None, locals());"
 
 project:
 ifndef name
