@@ -14,7 +14,7 @@ help:
 	@echo " rollback   Rolls back a unclosed update to the application"
 	@echo " serve      Runs the development web server"
 	@echo " console    Opens a development console to your remote application"
-	@echo "            (Only works if you've enabled the /remote_api URL"
+	@echo "            (Only works if you've enabled the /remote_api URL)"
 
 test:
 	@nosetests --with-gae --with-isolation $(dir)
@@ -74,5 +74,5 @@ else
 endif
 
 helipad-project: project
-	@wget -q http://github.com/jgeewax/helipad/raw/master/helipad.py
-	@wget -q http://github.com/jgeewax/helipad/raw/master/jinja2
+	@curl --silent -OL http://github.com/jgeewax/helipad/raw/master/helipad.py
+	@curl --silent -OL http://github.com/jgeewax/helipad/raw/master/jinja2
