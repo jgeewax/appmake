@@ -1,6 +1,6 @@
 ### Quickstart
 
-    jj@im-jj:~/yourappid$ wget -q http://github.com/downloads/jgeewax/appmake/Makefile
+    jj@im-jj:~/yourappid$ curl -OL --silent http://github.com/jgeewax/appmake/raw/master/Makefile
     jj@im-jj:~/yourappid$ make project name=yourappid
     jj@im-jj:~/yourappid$ 
 
