@@ -1,5 +1,13 @@
 ### Quickstart
 
+    curl -OL --silent http://github.com/jgeewax/appmake/raw/master/Makefile
+
+and then
+
+    make project name=yourappid
+
+#### Sample...
+
     jj@im-jj:~/yourappid$ curl -OL --silent http://github.com/jgeewax/appmake/raw/master/Makefile
     jj@im-jj:~/yourappid$ make project name=yourappid
     jj@im-jj:~/yourappid$ 
