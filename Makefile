@@ -15,6 +15,8 @@ help:
 	@echo " serve      Runs the development web server"
 	@echo " console    Opens a development console to your remote application"
 	@echo "            (Only works if you've enabled the /remote_api URL)"
+	@echo " project    Creates a new project"
+	@echo "            (Usage: make project name=yourprojectname)"
 
 test:
 	@nosetests --with-gae --with-isolation $(dir)
