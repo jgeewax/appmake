@@ -73,6 +73,9 @@ else
 	@echo "api_version: 1" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
+	@echo "- url: /remote_api" >> app.yaml
+	@echo "  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py" >> app.yaml
+	@echo "  login: admin" >> app.yaml
 endif
 
 helipad-project: project
