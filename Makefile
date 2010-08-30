@@ -76,6 +76,7 @@ else
 	@echo "- url: /remote_api" >> app.yaml
 	@echo "  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
+	@echo "cron:" >> cron.yaml
 endif
 
 helipad-project: project
