@@ -76,6 +76,14 @@ else
 	@echo "- url: /remote_api" >> app.yaml
 	@echo "  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
+	@echo "" >> app.yaml
+	@echo "- url: /_ah/queue/deferred" >> app.yaml
+	@echo "  script: $PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
+	@echo "  login: admin" >> app.yaml
+	@echo "queue:" >> queue.yaml
+	@echo "- name: default" >> queue.yaml
+	@echo "  rate: 5/s" >> queue.yaml
+	@echo "  bucket_size: 5" >> queue.yaml
 	@echo "cron:" >> cron.yaml
 endif
 
