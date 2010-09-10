@@ -67,10 +67,12 @@ else
 	@touch $(name)/library/tests/__init__.py
 	@touch $(name)/models/__init__.py
 	@touch $(name)/models/tests/__init__.py
+	@curl --silent -L http://appengine.google.com/favicon.ico > $(name)/static/media/favicon.ico
 	@echo "application: $(name)" >> app.yaml
 	@echo "version: 1" >> app.yaml
 	@echo "runtime: python" >> app.yaml
 	@echo "api_version: 1" >> app.yaml
+	@echo "" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
 	@echo "- url: /remote_api" >> app.yaml
@@ -80,6 +82,10 @@ else
 	@echo "- url: /_ah/queue/deferred" >> app.yaml
 	@echo "  script: $PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
+	@echo "" >> app.yaml
+	@echo "- url: /favicon.ico" >> app.yaml
+	@echo "  static_files: $(name)/static/media/favicon.ico" >> app.yaml
+	@echo "  upload: $(name)/static/media/favicon.ico" >> app.yaml
 	@echo "queue:" >> queue.yaml
 	@echo "- name: default" >> queue.yaml
 	@echo "  rate: 5/s" >> queue.yaml
