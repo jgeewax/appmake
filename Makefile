@@ -76,11 +76,11 @@ else
 	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
 	@echo "- url: /remote_api" >> app.yaml
-	@echo "  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py" >> app.yaml
+	@echo "  script: \$$PYTHON_LIB/google/appengine/ext/remote_api/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "- url: /_ah/queue/deferred" >> app.yaml
-	@echo "  script: $PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
+	@echo "  script: \$$PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "- url: /favicon.ico" >> app.yaml
