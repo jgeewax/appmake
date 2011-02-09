@@ -82,9 +82,8 @@ else
 	@mkdir $(name)/library/tests
 	@mkdir $(name)/models
 	@mkdir $(name)/models/tests
-	@mkdir $(name)/static
-	@mkdir $(name)/static/media
-	@mkdir $(name)/static/templates
+	@mkdir $(name)/media
+	@mkdir $(name)/templates
 	@touch $(name)/__init__.py
 	@touch $(name)/handlers/__init__.py
 	@touch $(name)/handlers/tests/__init__.py
@@ -92,7 +91,8 @@ else
 	@touch $(name)/library/tests/__init__.py
 	@touch $(name)/models/__init__.py
 	@touch $(name)/models/tests/__init__.py
-	@curl --silent -L http://appengine.google.com/favicon.ico > $(name)/static/media/favicon.ico
+	@curl --silent -L http://appengine.google.com/favicon.ico > $(name)/media/favicon.ico
+	@echo "User-agent: *\nDisallow: " > $(name)/robots.txt
 	@echo "application: $(name)" >> app.yaml
 	@echo "version: 1" >> app.yaml
 	@echo "runtime: python" >> app.yaml
@@ -113,15 +113,17 @@ else
 	@echo "  bucket_size: 5" >> queue.yaml
 	@echo "cron:" >> cron.yaml
 	@echo "" >> app.yaml
-	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
 	@echo "- url: /_ah/queue/deferred" >> app.yaml
 	@echo "  script: \$$PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
 	@echo "  login: admin" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "- url: /favicon.ico" >> app.yaml
-	@echo "  static_files: $(name)/static/media/favicon.ico" >> app.yaml
-	@echo "  upload: $(name)/static/media/favicon.ico" >> app.yaml
+	@echo "  static_files: $(name)/media/favicon.ico" >> app.yaml
+	@echo "  upload: $(name)/media/favicon.ico" >> app.yaml
+	@echo "- url: /robots.txt" >> app.yaml
+	@echo "  static_files: $(name)/robots.txt" >> app.yaml
+	@echo "  upload: $(name)/robots.txt" >> app.yaml
 endif
 
 helipad-project: project
