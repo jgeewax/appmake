@@ -102,6 +102,7 @@ else
 	@echo "- remote_api: on" >> app.yaml
 	@echo "- datastore_admin: on" >> app.yaml
 	@echo "- appstats: on" >> app.yaml
+	@echo "- deferred: on" >> app.yaml
 	@echo "" >> app.yaml
 	@echo "inbound_services:" >> app.yaml
 	@echo "- mail" >> app.yaml
@@ -114,10 +115,6 @@ else
 	@echo "cron:" >> cron.yaml
 	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
-	@echo "- url: /_ah/queue/deferred" >> app.yaml
-	@echo "  script: \$$PYTHON_LIB/google/appengine/ext/deferred/handler.py" >> app.yaml
-	@echo "  login: admin" >> app.yaml
-	@echo "" >> app.yaml
 	@echo "- url: /favicon.ico" >> app.yaml
 	@echo "  static_files: $(name)/media/favicon.ico" >> app.yaml
 	@echo "  upload: $(name)/media/favicon.ico" >> app.yaml
