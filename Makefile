@@ -118,6 +118,7 @@ else
 	@echo "- url: /favicon.ico" >> app.yaml
 	@echo "  static_files: $(name)/media/favicon.ico" >> app.yaml
 	@echo "  upload: $(name)/media/favicon.ico" >> app.yaml
+	@echo "" >> app.yaml
 	@echo "- url: /robots.txt" >> app.yaml
 	@echo "  static_files: $(name)/robots.txt" >> app.yaml
 	@echo "  upload: $(name)/robots.txt" >> app.yaml
