@@ -59,6 +59,9 @@ auth = lambda: ('$(EMAIL)', getpass.getpass('Password: ')); \
 remote_api_stub.ConfigureRemoteDatastore('$(APP_ID)', '/_ah/remote_api', auth, '$(APP_ID).appspot.com'); \
 code.interact('App Engine console for $(APP_ID)', None, locals());"
 
+vacuum-indexes:
+	@$(PYTHON) $(APPENGINE)/appcfg.py vacuum_indexes .
+
 download-data:
 ifndef filename
 	@echo "Invalid usage. Try 'make help' for more details."
