@@ -31,6 +31,10 @@ help:
 	@echo " download-data"
 	@echo "    Downloads your data from App Engine"
 	@echo "    (Usage: make download-data filename=downloaded-data.out)"
+	@echo " update-indexes"
+	@echo "    Updates App Engine with any indexes in index.yaml not already pushed"
+	@echo " vacuum-indexes"
+	@echo "    Deletes any indexes existing in App Engine but not in your index.yaml file"
 
 test:
 	@nosetests --with-gae --with-isolation $(dir)
@@ -58,6 +62,9 @@ from google.appengine.ext.remote_api import remote_api_stub; \
 auth = lambda: ('$(EMAIL)', getpass.getpass('Password: ')); \
 remote_api_stub.ConfigureRemoteDatastore('$(APP_ID)', '/_ah/remote_api', auth, '$(APP_ID).appspot.com'); \
 code.interact('App Engine console for $(APP_ID)', None, locals());"
+
+update-indexes:
+	@$(PYTHON) $(APPENGINE)/appcfg.py update_indexes .
 
 vacuum-indexes:
 	@$(PYTHON) $(APPENGINE)/appcfg.py vacuum_indexes .
