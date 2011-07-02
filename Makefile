@@ -118,12 +118,6 @@ else
 	@echo "- mail" >> app.yaml
 	@echo "- xmpp_message" >> app.yaml
 	@echo "" >> app.yaml
-	@echo "queue:" >> queue.yaml
-	@echo "- name: default" >> queue.yaml
-	@echo "  rate: 5/s" >> queue.yaml
-	@echo "  bucket_size: 5" >> queue.yaml
-	@echo "cron:" >> cron.yaml
-	@echo "" >> app.yaml
 	@echo "handlers:" >> app.yaml
 	@echo "- url: /favicon.ico" >> app.yaml
 	@echo "  static_files: $(name)/media/favicon.ico" >> app.yaml
@@ -132,6 +126,11 @@ else
 	@echo "- url: /robots.txt" >> app.yaml
 	@echo "  static_files: $(name)/robots.txt" >> app.yaml
 	@echo "  upload: $(name)/robots.txt" >> app.yaml
+	@echo "queue:" >> queue.yaml
+	@echo "- name: default" >> queue.yaml
+	@echo "  rate: 5/s" >> queue.yaml
+	@echo "  bucket_size: 5" >> queue.yaml
+	@echo "cron:" >> cron.yaml
 endif
 
 helipad-project: project
