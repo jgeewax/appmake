@@ -24,10 +24,6 @@ help:
 	@echo " project"
 	@echo "    Creates a new project"
 	@echo "    (Usage: make project name=yourprojectname)"
-	@echo " helipad-project"
-	@echo "    Creates a new helipad project"
-	@echo "    See http://github.com/jgeewax/helipad for more info"
-	@echo "    (Usage: make helipad-project name=yourprojectname)"
 	@echo " download-data"
 	@echo "    Downloads your data from App Engine"
 	@echo "    (Usage: make download-data filename=downloaded-data.out)"
@@ -132,7 +128,3 @@ else
 	@echo "  bucket_size: 5" >> queue.yaml
 	@echo "cron:" >> cron.yaml
 endif
-
-helipad-project: project
-	@curl --silent -OL http://github.com/jgeewax/helipad/raw/master/helipad.py
-	@curl --silent -OL http://github.com/jgeewax/helipad/raw/master/jinja2
