@@ -11,19 +11,20 @@ help:
 	@echo "AppEngine make file. Options are:"
 	@echo " test"
 	@echo "    Runs the test suite"
+	@echo "    (Usage: make test [dir=directory])"
 	@echo " coverage"
 	@echo "    Runs the test suite and prints a coverage report"
-	@echo " deploy"
-	@echo "    Deploys the current project to AppEngine"
+	@echo " update (or deploy)"
+	@echo "    Updates (deploys) the current project"
 	@echo " rollback"
-	@echo "    Rolls back a unclosed update to the application"
+	@echo "    Rolls back an unclosed update to the application"
 	@echo " serve"
 	@echo "    Runs the development web server"
 	@echo " console"
 	@echo "    Opens a development console to your remote application"
 	@echo "    (Only works if you've enabled the /_ah/remote_api URL)"
 	@echo " project"
-	@echo "    Creates a new project"
+	@echo "    Creates a new project template"
 	@echo "    (Usage: make project name=yourprojectname)"
 	@echo " download-data"
 	@echo "    Downloads your data from App Engine"
@@ -31,7 +32,7 @@ help:
 	@echo " update-indexes"
 	@echo "    Updates App Engine with any indexes in index.yaml not already pushed"
 	@echo " vacuum-indexes"
-	@echo "    Deletes any indexes existing in App Engine but not in your index.yaml file"
+	@echo "    Deletes any indexes existing on App Engine but not in your index.yaml file"
 
 test:
 	@nosetests --with-gae --with-isolation $(dir)
@@ -40,6 +41,9 @@ coverage:
 	@nosetests --with-gae --with-isolation --with-coverage $(dir)
 
 deploy:
+	$(APPCFG) -e $(EMAIL) update .
+
+update:
 	$(APPCFG) -e $(EMAIL) update .
 
 rollback:
