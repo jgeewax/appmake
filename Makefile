@@ -1,5 +1,6 @@
 PYTHON          = python
 APPENGINE       = /usr/local/google_appengine
+APPCFG          = $(PYTHON) $(APPENGINE)/appcfg.py
 APP_ID          = (YOUR-APP-ID)
 EMAIL           = (YOUR-EMAIL)
 SERVE_PORT      = 9091
@@ -39,10 +40,10 @@ coverage:
 	@nosetests --with-gae --with-isolation --with-coverage $(dir)
 
 deploy:
-	@$(PYTHON) $(APPENGINE)/appcfg.py -e $(EMAIL) update .
+	$(APPCFG) -e $(EMAIL) update .
 
 rollback:
-	@$(PYTHON) $(APPENGINE)/appcfg.py -e $(EMAIL) rollback .
+	$(APPCFG) -e $(EMAIL) rollback .
 
 serve:
 	@$(PYTHON) $(APPENGINE)/dev_appserver.py \
@@ -60,16 +61,16 @@ remote_api_stub.ConfigureRemoteDatastore('$(APP_ID)', '/_ah/remote_api', auth, '
 code.interact('App Engine console for $(APP_ID)', None, locals());"
 
 update-indexes:
-	@$(PYTHON) $(APPENGINE)/appcfg.py update_indexes .
+	$(APPCFG) update_indexes .
 
 vacuum-indexes:
-	@$(PYTHON) $(APPENGINE)/appcfg.py vacuum_indexes .
+	$(APPCFG) vacuum_indexes .
 
 download-data:
 ifndef filename
 	@echo "Invalid usage. Try 'make help' for more details."
 else
-	@$(PYTHON) $(APPENGINE)/appcfg.py download_data \
+	$(APPCFG) download_data \
 	--application=$(APP_ID) \
 	--email=$(EMAIL) \
 	--url=http://$(APP_ID).appspot.com/_ah/remote_api \
