@@ -1,4 +1,4 @@
-### Quickstart
+### Quick start
 
     curl -OL --silent http://github.com/jgeewax/appmake/raw/master/Makefile
 
@@ -6,7 +6,7 @@ and then
 
     make project name=yourappid
 
-#### Sample...
+#### For example...
 
     jj@im-jj:~/yourappid$ curl -OL --silent http://github.com/jgeewax/appmake/raw/master/Makefile
     jj@im-jj:~/yourappid$ make project name=yourappid
@@ -25,7 +25,7 @@ will see lots of errors about an invalid `app.yaml` file.
     OK
     jj@im-jj:~/yourappid$ 
 
-### Running the development server
+### Running the local development server
 Note: Inside the Makefile there are some settings such as which port to serve on
 and which IP to bind to. The default is `0.0.0.0:9091`, change it as you want.
 
@@ -38,11 +38,11 @@ and which IP to bind to. The default is `0.0.0.0:9091`, change it as you want.
 
     jj@im-jj:~/yourappid$ 
 
-### Deploying
+### Updating code
 Note: Make sure to jump into the Makefile and update the e-mail address you want
 to deploy with.
 
-    jj@im-jj:~/yourappid$ make deploy
+    jj@im-jj:~/yourappid$ make update
     Application: yourappid; version: 1.
     Server: appengine.google.com.
     Scanning files on local disk.
@@ -61,7 +61,16 @@ to deploy with.
     jj@im-jj:~yourappid$
 
 ### Putting it all together
-If the tests fail, don't deploy:
+If the tests fail, don't update the code:
 
-    jj@im-jj:~/yourappid$ make test deploy
+    jj@im-jj:~/yourappid$ make test update
 
+### Running a console using the Rempote API
+Note: This requires that you have remote_api: on in your app.yaml
+
+    jj@im-jj:~/yourappid# make console
+    App Engine remote_api shell
+    Python 2.7.2+ (default, Oct  4 2011, 20:06:09) 
+    [GCC 4.6.1]
+    The db, users, urlfetch, and memcache modules are imported.
+    s~yourappid>
