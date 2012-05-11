@@ -58,11 +58,7 @@ serve:
 	.
 
 console:
-	@$(PYTHON) -c "import code, getpass; \
-from google.appengine.ext.remote_api import remote_api_stub; \
-auth = lambda: ('$(EMAIL)', getpass.getpass('Password: ')); \
-remote_api_stub.ConfigureRemoteDatastore('$(APP_ID)', '/_ah/remote_api', auth, '$(APP_ID).appspot.com'); \
-code.interact('App Engine console for $(APP_ID)', None, locals());"
+	@$(PYTHON) $(APPENGINE)/remote_api_shell.py -s $(APP_ID).appspot.com
 
 update-indexes:
 	$(APPCFG) update_indexes .
