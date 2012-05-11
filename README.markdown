@@ -65,7 +65,7 @@ If the tests fail, don't update the code:
 
     jj@im-jj:~/yourappid$ make test update
 
-### Running a console using the Rempote API
+### Running a console using the Remote API
 Note: This requires that you have remote_api: on in your app.yaml
 
     jj@im-jj:~/yourappid# make console
