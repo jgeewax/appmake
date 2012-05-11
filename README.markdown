@@ -66,7 +66,7 @@ If the tests fail, don't update the code:
     jj@im-jj:~/yourappid$ make test update
 
 ### Running a console using the Remote API
-Note: This requires that you have remote_api: on in your app.yaml
+Note: This requires that you have `remote_api: on` in your `app.yaml` file.
 
     jj@im-jj:~/yourappid# make console
     App Engine remote_api shell
